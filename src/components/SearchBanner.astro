@@ -1,0 +1,99 @@
+---
+import ArrowRightIcon from '../icons/ArrowRightIcon.astro'
+import SearchIcon from '../icons/SearchIcon.astro'
+---
+
+<form>
+  <div class='search-container'>
+    <SearchIcon className='search-icon' />
+    <input
+      required
+      type='text'
+      name='jobSearch'
+      id='jobSearch'
+      placeholder='Puesto, empresa o palabras clave'
+      class='search-input'
+    />
+  </div>
+  <input
+    type='text'
+    name='location'
+    id='location'
+    placeholder='Ubicación (opcional)'
+    class='location-input'
+  />
+  <button type='submit'><ArrowRightIcon className='button-icon' /></button>
+</form>
+
+<style>
+  form {
+    border: 1px solid #8bbedb;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: var(--rounded);
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    transition: box-shadow 0.2s ease-in-out;
+  }
+  .search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .search-icon {
+    width: 25px;
+    position: absolute;
+  }
+  .search-container::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 60%;
+    background-color: #8bbedb;
+    right: 0;
+  }
+  .location-input {
+    padding-left: 10px;
+  }
+  .search-input,
+  .location-input {
+    outline: none;
+    border: none;
+    background-color: transparent;
+  }
+  .search-input::placeholder,
+  .location-input::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+  .search-input {
+    padding: 16px 10px 1rem 30px;
+    z-index: 1;
+    min-width: 33ch;
+  }
+  .search-container {
+    padding: 0 10px;
+  }
+  form:has(.search-input:focus),
+  form:has(.location-input:focus) {
+    box-shadow: -5px 5px 10px 0px #8bbedb8e;
+  }
+  button {
+    width: 3.5rem;
+    cursor: pointer;
+    height: auto;
+    border: none;
+    outline: none;
+    background-color: var(--primary-color);
+  }
+  button:hover {
+    background-color: #1d668f;
+  }
+  .button-icon {
+    transition: transform 0.2s ease-in-out;
+    fill: #fff;
+  }
+  button:hover .button-icon {
+    transform: translateX(2px);
+  }
+</style>

@@ -1,0 +1,36 @@
+---
+import type { JobList } from '../types/infojobsApi'
+import { clientId, clientSecret } from '../utils'
+import RelevantJobCard from './RelevantJobCard.astro'
+const token = btoa(`${clientId}:${clientSecret}`)
+const url =
+  'https://api.infojobs.net/api/9/offer?order=relevancia-desc&maxResults=5'
+const response = await fetch(url, {
+  headers: {
+    Authorization: `Basic ${token}`
+  }
+})
+const relevantJobs: JobList = await response.json()
+---
+
+<section>
+  <h2>Trabajos Más Relevantes!</h2>
+  <main>
+    {relevantJobs.items.map((job) => <RelevantJobCard job={job} />)}
+  </main>
+</section>
+<style>
+  main {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+  }
+  h2 {
+    font-size: var(--text-lg);
+    font-weight: 500;
+  }
+</style>

@@ -1,20 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Card from '../components/Card.astro'
-
-const clientId = import.meta.env.PUBLIC_INFOJOBS_CLIENTID
-const clientSecret = import.meta.env.PUBLIC_INFOJOBS_CLIENTSECRET
+import HeroBanner from '../components/HeroBanner.astro'
+import RelevantJobs from '../components/RelevantJobs.astro'
 ---
 
 <Layout title='Infojobs Hackathon'>
   <main>
-    <h1>Welcome to Infojobs</h1>
-    <ul role='list' class='link-card-grid'>
-      <Card
-        href='https://docs.astro.build/'
-        title='Documentation'
-        body='Learn how Astro works and explore the official API docs.'
-      />
-    </ul>
+    <HeroBanner />
+    <RelevantJobs />
   </main>
 </Layout>
+
+<style>
+  main {
+    max-width: 90%;
+    margin: auto;
+  }
+</style>
