@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro'
 import HeroBanner from '../components/HeroBanner.astro'
 import RelevantJobs from '../components/RelevantJobs.astro'
+import MasonryCategories from '../components/MasonryCategories.astro'
 ---
 
 <Layout title='Infojobs Hackathon'>
@@ -9,11 +10,20 @@ import RelevantJobs from '../components/RelevantJobs.astro'
     <HeroBanner />
     <RelevantJobs />
   </main>
+  <section>
+    <MasonryCategories />
+  </section>
 </Layout>
 
 <style>
   main {
     max-width: 90%;
-    margin: auto;
+    margin: 20px auto;
+    min-height: 100vh;
+  }
+  section {
+    height: 100vh;
+    background-color: var(--primary-color);
+    overflow: hidden;
   }
 </style>

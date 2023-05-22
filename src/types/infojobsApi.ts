@@ -95,4 +95,84 @@ interface JobList {
   items: JobItem[]
 }
 
-export type { JobList, JobItem }
+type FacetValue = {
+  key: string
+  value: string
+  count: number
+}
+
+type Facet = {
+  key: string
+  name: string
+  values: FacetValue[]
+}
+
+type City = {
+  key: string
+  value: string
+  count: number
+}
+
+type Offer = {
+  id: string
+  title: string
+  province: Province
+  city: string
+  link: string
+  category: Category
+  contractType: ContractType
+  subcategory: Subcategory
+  salaryMin: Salary
+  salaryMax: Salary
+  salaryPeriod: Salary
+  experienceMin: Experience
+  workDay: WorkDay
+  study: Study
+  teleworking: Teleworking
+  published: string
+  updated: string
+  author: Author
+  requirementMin: string
+  bold: boolean
+  applications: string
+  subSegment: number
+  executive: boolean
+  salaryDescription: string
+  multiProvince: boolean
+  urgent: boolean
+  color: boolean
+}
+
+type OfferResponse = {
+  currentPage: number
+  pageSize: number
+  totalResults: number
+  currentResults: number
+  totalPages: number
+  availableSortingMethods: string[]
+  sortBy: string
+  sinceDate: string
+  items: Offer[]
+  dataLayer: {
+    offer_search_page: string
+    offer_search_page_limit: string
+    region_level2_id: string
+  }
+  facets: Facet[]
+  queryParameters: {
+    study: string[]
+    province: string[]
+    salaryPeriod: string
+    city: string[]
+    contractType: string[]
+    query: string
+    experienceMin: string[]
+    category: string[]
+    workDay: string[]
+    teleworking: string[]
+  }
+  eligibleForAutomaticAlertCreation: boolean
+  offers: Offer[]
+}
+
+export type { JobList, JobItem, OfferResponse }
