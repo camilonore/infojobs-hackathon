@@ -21,11 +21,11 @@ const offers: OfferResponse = await response.json()
           return categories.map((category, idx) => {
             return (
               <>
-                <div class={`category-card place-${idx}`}>
+                <a class={`category-card place-${idx}`} href='/login'>
                   <p class='title'>{category.value}</p>
                   <p class='count'>{category.count} Empleos</p>
                   <img src={`image${idx}.webp`} alt='' />
-                </div>
+                </a>
               </>
             )
           })
@@ -67,6 +67,10 @@ const offers: OfferResponse = await response.json()
     width: 100%;
     border-radius: var(--rounded);
     padding: 20px;
+    text-decoration: none;
+  }
+  .category-card:hover img {
+    transform: scale(1.05);
   }
   .category-card > img {
     position: absolute;
@@ -76,6 +80,7 @@ const offers: OfferResponse = await response.json()
     object-fit: cover;
     z-index: 0;
     filter: brightness(0.8);
+    transition: all 0.3s ease-in-out;
   }
   .title {
     z-index: 1;
