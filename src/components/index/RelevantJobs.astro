@@ -1,15 +1,7 @@
 ---
-import type { JobList } from 'types/infojobsApi'
-import { token } from '@utils/index'
 import RelevantJobCard from './RelevantJobCard.astro'
-const url =
-  'https://api.infojobs.net/api/9/offer?order=relevancia-desc&maxResults=5'
-const response = await fetch(url, {
-  headers: {
-    Authorization: `Basic ${token}`
-  }
-})
-const relevantJobs: JobList = await response.json()
+import { InfojobsService } from 'src/services/infojobsService'
+const relevantJobs = await InfojobsService.getRelevantJobs()
 ---
 
 <section>

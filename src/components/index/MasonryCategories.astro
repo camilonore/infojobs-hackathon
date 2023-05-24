@@ -1,21 +1,13 @@
 ---
-import type { OfferResponse } from 'types/infojobsApi'
-import { token } from '@utils/index'
-
-const url = 'https://api.infojobs.net/api/9/offer?facets=true&maxResults=1'
-const response = await fetch(url, {
-  headers: {
-    Authorization: `Basic ${token}`
-  }
-})
-const offers: OfferResponse = await response.json()
+import { InfojobsService } from 'src/services/infojobsService'
+const facets = await InfojobsService.getFacets()
 ---
 
 <div class='jobs-container'>
   <p class='section-title'>Los Empleos Más Demandados</p>
   <div class='categories-container'>
     {
-      offers.facets.map((facet) => {
+      facets.map((facet) => {
         if (facet.name == 'Categoría') {
           const categories = facet.values.slice(0, 8)
           return categories.map((category, idx) => {
