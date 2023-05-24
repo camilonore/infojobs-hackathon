@@ -37,6 +37,12 @@ class InfojobsService {
     const response = await InfojobsService.fetchApi(url)
     return response.json()
   }
+
+  static async searchOffers(query: string): Promise<OfferResponse> {
+    const url = `https://api.infojobs.net/api/9/offer?${query}`
+    const response = await InfojobsService.fetchApi(url)
+    return response.json()
+  }
 }
 
 export { InfojobsService }

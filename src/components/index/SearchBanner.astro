@@ -3,7 +3,7 @@ import ArrowRightIcon from '@icons/ArrowRightIcon.astro'
 import SearchIcon from '@icons/SearchIcon.astro'
 ---
 
-<form>
+<form id='searchForm'>
   <div class='search-container'>
     <SearchIcon className='search-icon' />
     <input
@@ -17,13 +17,25 @@ import SearchIcon from '@icons/SearchIcon.astro'
   </div>
   <input
     type='text'
-    name='location'
-    id='location'
-    placeholder='Ubicación (opcional)'
-    class='location-input'
+    name='city'
+    id='city'
+    placeholder='Ciudad (opcional)'
+    class='city-input'
   />
   <button type='submit'><ArrowRightIcon className='button-icon' /></button>
 </form>
+
+<script>
+  const $searchForm = document.getElementById('searchForm') as HTMLFormElement
+  $searchForm.addEventListener('submit', (evt) => {
+    evt.preventDefault()
+    const formData = new FormData($searchForm)
+    const { jobSearch, city } = Object.fromEntries(formData.entries())
+    window.location.href = `/jobsearch?q=${jobSearch}${
+      city !== '' ? `&city=${city}` : ''
+    }`
+  })
+</script>
 
 <style>
   form {
@@ -53,17 +65,17 @@ import SearchIcon from '@icons/SearchIcon.astro'
     background-color: #8bbedb;
     right: 0;
   }
-  .location-input {
+  .city-input {
     padding-left: 10px;
   }
   .search-input,
-  .location-input {
+  .city-input {
     outline: none;
     border: none;
     background-color: transparent;
   }
   .search-input::placeholder,
-  .location-input::placeholder {
+  .city-input::placeholder {
     color: rgba(0, 0, 0, 0.4);
   }
   .search-input {
@@ -75,7 +87,7 @@ import SearchIcon from '@icons/SearchIcon.astro'
     padding: 0 10px;
   }
   form:has(.search-input:focus),
-  form:has(.location-input:focus) {
+  form:has(.city-input:focus) {
     box-shadow: -5px 5px 10px 0px #8bbedb8e;
   }
   button {
