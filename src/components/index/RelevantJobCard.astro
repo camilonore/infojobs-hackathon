@@ -1,15 +1,15 @@
 ---
-import type { JobItem } from '../types/infojobsApi'
+import type { JobItem } from 'types/infojobsApi'
 
 export interface Props {
   job: JobItem
 }
 
 const { job } = Astro.props
-const { title, city, link, salaryDescription, author } = job
+const { title, city, id, salaryDescription, author } = job
 ---
 
-<a href={link} target='_blank'>
+<a href={`jobsearch/${id}`} target='_blank'>
   <div>
     <h3>
       {title.toLowerCase()}

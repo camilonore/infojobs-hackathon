@@ -1,6 +1,6 @@
 ---
-import type { JobList } from '../types/infojobsApi'
-import { token } from '../utils'
+import type { JobList } from 'types/infojobsApi'
+import { token } from '@utils/index'
 import RelevantJobCard from './RelevantJobCard.astro'
 const url =
   'https://api.infojobs.net/api/9/offer?order=relevancia-desc&maxResults=5'

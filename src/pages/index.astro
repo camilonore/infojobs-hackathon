@@ -1,8 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import HeroBanner from '../components/HeroBanner.astro'
-import RelevantJobs from '../components/RelevantJobs.astro'
-import MasonryCategories from '../components/MasonryCategories.astro'
+import Layout from '@layouts/Layout.astro'
+import HeroBanner from '@components/index/HeroBanner.astro'
+import RelevantJobs from '@components/index/RelevantJobs.astro'
+import MasonryCategories from '@components/index/MasonryCategories.astro'
+export const prerender = true
 ---
 
 <Layout title='Infojobs Hackathon'>

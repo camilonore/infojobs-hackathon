@@ -1,9 +1,13 @@
 ---
-import ArrowRightIcon from '../icons/ArrowRightIcon.astro'
+import ArrowRightIcon from '@icons/ArrowRightIcon.astro'
+const queryEntries = Astro.url.searchParams.entries()
+console.log(queryEntries)
 ---
 
 <header>
-  <img src='/infojobsLogo.svg' alt='Infojobs' />
+  <a href='/'>
+    <img src='/infojobsLogo.svg' alt='Infojobs' />
+  </a>
   <ul>
     <li>Empleos</li>
     <li>Salarios</li>

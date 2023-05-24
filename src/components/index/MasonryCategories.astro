@@ -1,6 +1,6 @@
 ---
-import type { OfferResponse } from '../types/infojobsApi'
-import { token } from '../utils'
+import type { OfferResponse } from 'types/infojobsApi'
+import { token } from '@utils/index'
 
 const url = 'https://api.infojobs.net/api/9/offer?facets=true&maxResults=1'
 const response = await fetch(url, {
@@ -19,9 +19,13 @@ const offers: OfferResponse = await response.json()
         if (facet.name == 'Categoría') {
           const categories = facet.values.slice(0, 8)
           return categories.map((category, idx) => {
+            const path = category.key.toString()
             return (
               <>
-                <a class={`category-card place-${idx}`} href='/login'>
+                <a
+                  class={`category-card place-${idx}`}
+                  href={`jobsearch?category=${path}`}
+                >
                   <p class='title'>{category.value}</p>
                   <p class='count'>{category.count} Empleos</p>
                   <img src={`image${idx}.webp`} alt='' />
