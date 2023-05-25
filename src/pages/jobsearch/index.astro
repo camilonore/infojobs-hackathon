@@ -1,9 +1,9 @@
 ---
 import Layout from '@layouts/Layout.astro'
-import { InfojobsService } from 'src/services/infojobsService'
+import { InfojobsServices } from 'src/services/infojobsServices'
 const queryEntries = Astro.url.searchParams.toString()
 const query = queryEntries ? `${queryEntries}` : ''
-const jobsRetrieved = await InfojobsService.searchOffers(query)
+const jobsRetrieved = await InfojobsServices.searchOffers(query)
 ---
 
 <Layout title='Ofertas de trabajo'>

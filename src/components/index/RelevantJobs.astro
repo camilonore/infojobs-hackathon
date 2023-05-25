@@ -1,7 +1,7 @@
 ---
 import RelevantJobCard from './RelevantJobCard.astro'
-import { InfojobsService } from 'src/services/infojobsService'
-const relevantJobs = await InfojobsService.getRelevantJobs()
+import { InfojobsServices } from 'src/services/infojobsServices'
+const relevantJobs = await InfojobsServices.getRelevantJobs()
 ---
 
 <section>

@@ -1,8 +1,8 @@
 ---
 import Layout from '@layouts/Layout.astro'
-import { InfojobsService } from 'src/services/infojobsService'
+import { InfojobsServices } from 'src/services/infojobsServices'
 const { jobId } = Astro.params
-const jobDetails = await InfojobsService.getOfferDetails(jobId ?? '')
+const jobDetails = await InfojobsServices.getOfferDetails(jobId ?? '')
 ---
 
 <Layout title='Ofertas de trabajo'>
