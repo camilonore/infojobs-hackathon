@@ -1,0 +1,154 @@
+---
+import type { JobItem } from 'types/infojobsApiTypes'
+import { getTimeAgo } from '@utils/index'
+import LocationIcon from '@icons/LocationIcon.astro'
+import SalaryIcon from '@icons/SalaryIcon.astro'
+import SuitboxIcon from '@icons/SuitboxIcon.astro'
+import ClockIcon from '@icons/ClockIcon.astro'
+import VeryHappyIcon from '@icons/Faces/VeryHappyIcon.astro'
+import HappyIcon from '@icons/Faces/HappyIcon.astro'
+import NeutralIcon from '@icons/Faces/NeutralIcon.astro'
+import SadIcon from '@icons/Faces/SadIcon.astro'
+
+interface Props {
+  job: JobItem
+}
+
+const faceIcons = {
+  0: VeryHappyIcon,
+  5: HappyIcon,
+  10: NeutralIcon
+}
+
+const { job } = Astro.props
+const {
+  author,
+  title,
+  salaryDescription,
+  applications,
+  province,
+  city,
+  updated,
+  workDay
+} = job
+
+const getFaceIcon = (applications: number) => {
+  const faceIcon = Object.entries(faceIcons).find(([key]) => {
+    const keyNumber = Number(key)
+    return applications <= keyNumber
+  })
+  return faceIcon ? faceIcon[1] : SadIcon
+}
+
+const FaceIcon = getFaceIcon(Number(applications))
+const companyLogo = author.logoUrl ? author.logoUrl : '/dummy-company-logo.png'
+const jobTitle = title.toLocaleLowerCase()
+const jobLocation = `${province.value}, ${city}`
+const parsedDate = Date.parse(updated)
+const timeAgo = getTimeAgo(parsedDate, 'es')
+---
+
+<a class='job-card' href={`jobsearch/${job.id}`}>
+  <header>
+    <img src={companyLogo} alt={author.name} />
+    <div>
+      <h3 class='title'>{jobTitle}</h3>
+      <p class='author-name'>{author.name}</p>
+    </div>
+  </header>
+  <p class='location'>
+    <LocationIcon className='text-icon' />
+    {jobLocation}
+  </p>
+  <p class='workday'>
+    <SuitboxIcon className='text-icon' />
+    {`Tipo de jornada: ${workDay.value}`}
+  </p>
+  <p class='salary'>
+    <SalaryIcon className='text-icon' />
+    {salaryDescription}
+  </p>
+  <p class='time-ago'>
+    <ClockIcon className='text-icon' />
+    {`Actualizado ${timeAgo}`}
+  </p>
+  <p class='applications'>
+    <FaceIcon />
+    {`${applications} Candidatos postulados!`}
+  </p>
+</a>
+
+<style>
+  .job-card {
+    padding: 20px;
+    border-radius: var(--rounded);
+    text-decoration: none;
+    color: #000;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in;
+  }
+  .job-card:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: translate(0, -2px);
+  }
+  .job-card:hover .text-icon {
+    fill: #fff;
+  }
+  header {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 15px;
+    align-items: center;
+  }
+  header > img {
+    border-radius: var(--rounded);
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    width: 100%;
+  }
+  header > div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+  }
+  .title {
+    font-weight: bold;
+    font-size: var(--text-sm);
+    text-transform: capitalize;
+  }
+  .salary {
+    font-weight: bold;
+  }
+  .author-name,
+  .location,
+  .salary,
+  .workday,
+  .time-ago,
+  .applications {
+    font-size: var(--text-xs);
+  }
+  .text-icon {
+    height: 15px;
+  }
+  .applications {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+</style>
+<style is:inline>
+  .applications > svg {
+    height: 16px;
+  }
+  .job-card:hover .applications > svg > path {
+    fill: #fff;
+    color: #fff;
+  }
+</style>

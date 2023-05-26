@@ -1,12 +1,29 @@
 ---
+import JobCard from '@components/jobsearch/JobCard.astro'
 import Layout from '@layouts/Layout.astro'
 import { InfojobsServices } from 'src/services/infojobsServices'
 const queryEntries = Astro.url.searchParams.toString()
 const query = queryEntries ? `${queryEntries}` : ''
-const jobsRetrieved = await InfojobsServices.searchOffers(query)
+const jobsFound = await InfojobsServices.searchOffers(query)
+const { currentPage, totalPages, totalResults, items: jobs } = jobsFound
 ---
 
 <Layout title='Ofertas de trabajo'>
-  <h1>Busca el trabajo que sueñas</h1>
-  {JSON.stringify(jobsRetrieved.items[0])}
+  <section class='jobs-container'>
+    {
+      jobs.map((job) => {
+        return <JobCard job={job} />
+      })
+    }
+  </section>
 </Layout>
+
+<style>
+  .jobs-container {
+    max-width: 90%;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 20px;
+  }
+</style>
