@@ -1,0 +1,118 @@
+---
+import Facebook from '@icons/Social/Facebook.astro'
+import Twitter from '@icons/Social/Twitter.astro'
+import Youtube from '@icons/Social/Youtube.astro'
+---
+
+<footer>
+  <div class='infojobs-info'>
+    <section>
+      <p>Nosotros</p>
+      <a href=''> Ayuda</a>
+      <a href=''> Seguridad</a>
+      <a href=''> Condiciones legales</a>
+      <a href=''> Política de Privacidad</a>
+      <a href=''> Uso del servicio</a>
+      <a href=''> Política de cookies</a>
+      <a href=''> Gestionar cookies</a>
+    </section>
+
+    <section>
+      <p>Sobre InfoJobs</p>
+      <a href=''> InfoJobs hoy</a>
+      <a href=''> Trabaja con nosotros</a>
+      <a href=''> Ofertas de empleo</a>
+    </section>
+
+    <section>
+      <p>+ InfoJobs</p>
+      <a href=''> InfoJobs Awards</a>
+      <a href=''> InfoJobs Academy</a>
+      <a href=''> Orientación laboral</a>
+      <a href=''> InfoJobs Formación</a>
+      <a href=''> Blog empresas</a>
+      <a href=''> Oferte di lavoro in Italia</a>
+    </section>
+
+    <section>
+      <p>Prensa</p>
+      <a href=''> Indicadores de InfoJobs</a>
+      <a href=''> Notas de prensa</a>
+      <a href=''> Contacto de prensa</a>
+    </section>
+  </div>
+  <div class='social-media'>
+    <section>
+      <p>Redes sociales</p>
+      <a href='' title='Facebook'><Facebook className='social-icon' /></a>
+      <a href='' title='Twitter'><Twitter className='social-icon' /></a>
+      <a href='' title='Youtube'><Youtube className='social-icon' /></a>
+    </section>
+    <section>
+      <p>Descarga la app</p>
+      <a href='' title='App Store'
+        ><img class='store-image' src='/pic-app-store.png' alt='App Store' /></a
+      >
+      <a href='' title='Google Play'
+        ><img
+          class='store-image'
+          src='/pic-google-play.png'
+          alt='Google Play'
+        /></a
+      >
+    </section>
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid #00000036;
+    background-color: #f2f2f2;
+    padding: 20px 15% 10px 15%;
+  }
+  .infojobs-info,
+  .social-media {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .infojobs-info section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .social-media a {
+    margin-right: 10px;
+  }
+
+  .social-icon {
+    width: 40px;
+    aspect-ratio: 1/1;
+    fill: #2d3133;
+  }
+
+  .store-image {
+    height: 35px;
+  }
+
+  p {
+    color: #393939;
+    font-size: var(--text-md);
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  a {
+    color: #2d3133;
+    font-size: var(--text-sm);
+    text-decoration: none;
+    margin: 3px 0;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
