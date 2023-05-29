@@ -3,7 +3,6 @@ import Layout from '@layouts/Layout.astro'
 import { InfojobsServices } from 'src/services/infojobsServices'
 const { jobId } = Astro.params
 const jobDetails = await InfojobsServices.getOfferDetails(jobId ?? '')
-const prerender = false
 ---
 
 <Layout title='Ofertas de trabajo'>
