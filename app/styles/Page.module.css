@@ -1,0 +1,10 @@
+.main {
+  max-width: 90%;
+  margin: 20px auto;
+  min-height: 100vh;
+}
+.section {
+  height: 100vh;
+  overflow: hidden;
+  margin: 10px 0;
+}

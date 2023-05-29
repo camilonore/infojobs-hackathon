@@ -1,0 +1,73 @@
+.form {
+  border: 1px solid #8bbedb;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: var(--rounded);
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  transition: box-shadow 0.2s ease-in-out;
+}
+.searchContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.searchContainer > svg {
+  width: 25px;
+  position: absolute;
+}
+.searchContainer::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 60%;
+  background-color: #8bbedb;
+  right: 0;
+}
+.cityInput {
+  padding-left: 10px;
+}
+.searchInput,
+.cityInput {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+.searchInput::placeholder,
+.cityInput::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+.searchInput {
+  padding: 16px 10px 1rem 30px;
+  z-index: 1;
+  min-width: 33ch;
+}
+.searchContainer {
+  padding: 0 10px;
+}
+.form:has(.searchInput:focus),
+.form:has(.cityInput:focus) {
+  box-shadow: -5px 5px 10px 0px #8bbedb8e;
+}
+.button {
+  width: 3.5rem;
+  cursor: pointer;
+  height: auto;
+  border: none;
+  outline: none;
+  background-color: var(--primary-color);
+}
+.button:hover {
+  background-color: #1d668f;
+}
+.button > svg > path {
+  fill: #fff;
+}
+.button > svg {
+  height: 25px;
+  transition: transform 0.2s ease-in-out;
+}
+.button:hover > svg {
+  transform: translateX(2px);
+}

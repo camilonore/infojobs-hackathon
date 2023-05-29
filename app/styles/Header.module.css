@@ -1,0 +1,45 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+}
+.header img {
+  height: 25px;
+}
+.ul {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 15px;
+}
+.loginButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  text-decoration: none;
+  color: var(--primary-color);
+  border-radius: var(--rounded);
+  border: 1px solid var(--primary-color);
+  padding: 5px 10px;
+}
+.loginButton > svg {
+  height: 20px;
+}
+.loginButton > svg > path {
+  fill: var(--primary-color);
+  transition: transform 0.2s ease-in;
+}
+.loginButton:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+.loginButton:hover > svg > path {
+  fill: #fff;
+  transform: translateX(2px);
+}

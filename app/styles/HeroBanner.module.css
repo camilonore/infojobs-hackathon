@@ -1,0 +1,26 @@
+.section {
+  display: grid;
+  grid-template-columns: 70% 1fr;
+}
+.div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 15%;
+}
+.h2 {
+  font-size: var(--text-xl);
+  font-weight: bold;
+  word-wrap: break-word;
+  width: 100%;
+  color: transparent;
+  background: linear-gradient(90deg, #8bbedb, #80d2a8 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+.img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}

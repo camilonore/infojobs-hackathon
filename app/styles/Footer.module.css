@@ -1,0 +1,59 @@
+.footer {
+  border-top: 1px solid #00000036;
+  background-color: #f2f2f2;
+  padding: 20px 15% 10px 15%;
+}
+.infojobsInfo,
+.socialMedia {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.infojobsInfo section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.socialMedia a {
+  margin-right: 10px;
+}
+
+.iconContainer > svg {
+  width: 40px;
+  aspect-ratio: 1/1;
+  fill: #2d3133;
+}
+
+.iconContainer > svg:hover > path {
+  fill: var(--primary-color);
+}
+
+.storeImage {
+  height: 35px;
+}
+
+.storeImage:hover {
+  filter: brightness(0.8);
+}
+
+.infojobsInfo > section > p,
+.socialMedia p {
+  color: #393939;
+  font-size: var(--text-md);
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.infojobsInfo > section > a {
+  color: #2d3133;
+  font-size: var(--text-sm);
+  text-decoration: none;
+  margin: 3px 0;
+}
+
+.infojobsInfo > section > a:hover {
+  text-decoration: underline;
+}
