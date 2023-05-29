@@ -1,86 +1,83 @@
-// import type { JobItem } from 'types/infojobsApiTypes'
-// import { getTimeAgo } from '@utils/index'
-// import LocationIcon from '@icons/LocationIcon'
-// import SalaryIcon from '@icons/SalaryIcon'
-// import SuitboxIcon from '@icons/SuitboxIcon'
-// import ClockIcon from '@icons/ClockIcon'
-// import VeryHappyIcon from '@icons/Faces/VeryHappyIcon'
-// import HappyIcon from '@icons/Faces/HappyIcon'
-// import NeutralIcon from '@icons/Faces/NeutralIcon'
-// import SadIcon from '@icons/Faces/SadIcon'
+import type { JobItem } from "../../types/infojobsApiTypes";
+import { getTimeAgo } from "@utils/index";
+import { LocationIcon } from "@icons/LocationIcon";
+import { SalaryIcon } from "@icons/SalaryIcon";
+import { SuitboxIcon } from "@icons/SuitboxIcon";
+import { ClockIcon } from "@icons/ClockIcon";
+import { VeryHappyIcon } from "@icons/Faces";
+import { HappyIcon } from "@icons/Faces";
+import { NeutralIcon } from "@icons/Faces";
+import { SadIcon } from "@icons/Faces";
 
-// interface Props {
-//   job: JobItem
-// }
+function JobCard({ job }: { job: JobItem }) {
+  const faceIcons = {
+    0: VeryHappyIcon,
+    5: HappyIcon,
+    10: NeutralIcon,
+  };
 
-// const faceIcons = {
-//   0: VeryHappyIcon,
-//   5: HappyIcon,
-//   10: NeutralIcon
-// }
+  const getFaceIcon = (applications: number) => {
+    const faceIcon = Object.entries(faceIcons).find(([key]) => {
+      const keyNumber = Number(key);
+      return applications <= keyNumber;
+    });
+    return faceIcon ? faceIcon[1] : SadIcon;
+  };
+  const {
+    author,
+    title,
+    salaryDescription,
+    applications,
+    province,
+    city,
+    updated,
+    workDay,
+  } = job;
+  const companyLogo = author.logoUrl
+    ? author.logoUrl
+    : "/dummy-company-logo.png";
+  const jobTitle = title.toLocaleLowerCase();
+  const jobLocation = `${province.value}, ${city}`;
+  const parsedDate = Date.parse(updated);
+  const timeAgo = getTimeAgo(parsedDate, "es");
 
-// const { job } = Astro.props
-// const {
-//   author,
-//   title,
-//   salaryDescription,
-//   applications,
-//   province,
-//   city,
-//   updated,
-//   workDay
-// } = job
+  // TODO: Change face icon with applications
+  const FaceIcon = getFaceIcon(Number(applications));
 
-// const getFaceIcon = (applications: number) => {
-//   const faceIcon = Object.entries(faceIcons).find(([key]) => {
-//     const keyNumber = Number(key)
-//     return applications <= keyNumber
-//   })
-//   return faceIcon ? faceIcon[1] : SadIcon
-// }
-
-// const FaceIcon = getFaceIcon(Number(applications))
-// const companyLogo = author.logoUrl ? author.logoUrl : '/dummy-company-logo.png'
-// const jobTitle = title.toLocaleLowerCase()
-// const jobLocation = `${province.value}, ${city}`
-// const parsedDate = Date.parse(updated)
-// const timeAgo = getTimeAgo(parsedDate, 'es')
-
-function JobCard() {
   return (
-    <a className='job-card' href={`jobsearch/${job.id}`}>
+    <a className="job-card" href={`jobsearch/${job.id}`}>
       <header>
         <img src={companyLogo} alt={author.name} />
         <div>
-          <h3 className='title'>{jobTitle}</h3>
-          <p className='author-name'>{author.name}</p>
+          <h3 className="title">{jobTitle}</h3>
+          <p className="author-name">{author.name}</p>
         </div>
       </header>
-      <p className='location'>
-        <LocationIcon className='text-icon' />
+      <p className="location">
+        <LocationIcon className="text-icon" />
         {jobLocation}
       </p>
-      <p className='workday'>
-        <SuitboxIcon className='text-icon' />
+      <p className="workday">
+        <SuitboxIcon className="text-icon" />
         {`Tipo de jornada: ${workDay.value}`}
       </p>
-      <p className='salary'>
-        <SalaryIcon className='text-icon' />
+      <p className="salary">
+        <SalaryIcon className="text-icon" />
         {salaryDescription}
       </p>
-      <p className='time-ago'>
-        <ClockIcon className='text-icon' />
+      <p className="time-ago">
+        <ClockIcon className="text-icon" />
         {`Actualizado ${timeAgo}`}
       </p>
-      <p className='applications'>
+      <p className="applications">
         <FaceIcon />
         {`${applications} Candidatos postulados!`}
       </p>
     </a>
-  )
+  );
 }
 
-export { JobCard }
+export { JobCard };
 
 {
   /* <style>
