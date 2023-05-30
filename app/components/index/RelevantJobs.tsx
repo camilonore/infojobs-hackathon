@@ -1,16 +1,17 @@
 import { RelevantJobCard } from './RelevantJobCard'
-// import { InfojobsServices } from 'src/services/infojobsServices'
-// const relevantJobs = await InfojobsServices.getRelevantJobs()
+import { InfojobsServices } from '@services/infojobsServices'
+import type { JobList } from '../../types/infojobsApiTypes'
 import styles from '@styles/RelevantJobs.module.css'
 
-function RelevantJobs() {
+async function RelevantJobs() {
+  const relevantJobs: JobList = await InfojobsServices.getRelevantJobs()
   return (
     <section>
       <h2 className={styles.h2}>Trabajos Más Relevantes!</h2>
       <main className={styles.main}>
-        {/* {relevantJobs.items.map((job) => ( */}
-        {/*  <RelevantJobCard job={job} /> */}
-        {/* ))} */}
+        {relevantJobs.items.map((job) => (
+          <RelevantJobCard job={job} key={job.id} />
+        ))}
       </main>
     </section>
   )

@@ -1,91 +1,25 @@
-// import type { JobItem } from 'types/infojobsApiTypes'
+import type { JobItem } from '../../types/infojobsApiTypes'
+import styles from '@styles/RelevantJobCard.module.css'
 
-// export interface Props {
-//   job: JobItem
-// }
+interface Props {
+  job: JobItem
+}
 
-// const { job } = Astro.props
-// const { title, city, id, salaryDescription, author } = job
+function RelevantJobCard({ job }: Props) {
+  const { title, city, id, salaryDescription, author } = job
 
-function RelevantJobCard() {
   return (
-    <></>
-    // <a href={`jobsearch/${id}`}>
-    //   <div>
-    //     <h3>{title.toLowerCase()}</h3>
-    //     <div className='location'>
-    //       <p>{city}</p>
-    //     </div>
-    //     <p className='salary'>{salaryDescription}</p>
-    //   </div>
-    //   <p className='author'>{author.name}</p>
-    // </a>
+    <a className={styles.a} href={`jobsearch/${id}`}>
+      <div>
+        <h3 className={styles.h3}>{title.toLowerCase()}</h3>
+        <div className={styles.location}>
+          <p>{city}</p>
+        </div>
+        <p className={styles.salary}>{salaryDescription}</p>
+      </div>
+      <p className={styles.author}>{author.name}</p>
+    </a>
   )
 }
 
 export { RelevantJobCard }
-
-// <style>
-//   a {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-between;
-//     min-width: 180px;
-//     max-width: 220px;
-//     background-color: #fff;
-//     border-radius: var(--rounded);
-//     padding: 20px;
-//     aspect-ratio: 1/1;
-//     text-decoration: none;
-//     color: #000;
-//     transition: transform 0.3s ease;
-//     transform: translate(0, 0);
-//     box-shadow: 6px 6px 10px 2px rgba(0, 0, 0, 0.16);
-//   }
-//   h3 {
-//     max-width: 100%;
-//     font-size: var(--text-md);
-//     font-weight: bold;
-//     word-wrap: break-word;
-//     text-transform: capitalize;
-//   }
-//   a:hover {
-//     background-color: var(--primary-color);
-//     z-index: 5;
-//     transform: translate(0, -5px);
-//   }
-//   a:hover h3 {
-//     color: #fff;
-//   }
-//   .salary,
-//   .author {
-//     font-size: var(--text-sm);
-//   }
-//   a:hover .salary {
-//     color: #f8e287;
-//   }
-//   a:hover .author {
-//     color: #fff;
-//   }
-//   .author::before {
-//     content: '';
-//     height: 1px;
-//     width: 100%;
-//     margin: 10px;
-//     background-color: #ccc;
-//     display: block;
-//   }
-//   .location {
-//     padding: 2px 10px;
-//     margin: 20px 0;
-//     font-size: var(--text-xs);
-//     width: fit-content;
-//     border-radius: var(--rounded);
-//     color: #53725e;
-//     background-color: #f9f6ee;
-//   }
-//   a:hover .location {
-//     background-color: #23536e;
-//     color: #fff;
-//   }
-// </style>
