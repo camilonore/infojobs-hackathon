@@ -1,14 +1,14 @@
-// import { InfojobsServices } from 'src/services/infojobsServices'
-// const facets = await InfojobsServices.getFacets()
-
+import { InfojobsServices } from '@services/infojobsServices'
 import styles from '@styles/MasonryCategories.module.css'
+import type { Facet } from '../../types/infojobsApiTypes'
 
-function MasonryCategories() {
+async function MasonryCategories() {
+  const facets: Facet[] = await InfojobsServices.getFacets()
   return (
     <div className={styles.jobsContainer}>
       <p className={styles.sectionTitle}>Los Empleos Más Demandados</p>
       <div className={styles.categoriesContainer}>
-        {/* {facets.map((facet) => {
+        {facets.map((facet) => {
           if (facet.name == 'Categoría') {
             const categories = facet.values.slice(0, 8)
             return categories.map((category, idx) => {
@@ -27,7 +27,7 @@ function MasonryCategories() {
               )
             })
           }
-        })} */}
+        })}
       </div>
     </div>
   )

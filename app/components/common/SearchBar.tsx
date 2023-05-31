@@ -1,10 +1,20 @@
+'use client'
 import { ArrowRightIcon } from '@icons/ArrowRightIcon'
 import { SearchIcon } from '@icons/SearchIcon'
 import styles from '@styles/SearchBar.module.css'
 
 function SearchBar() {
+  const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
+    evt.preventDefault()
+    const formData = new FormData(evt.currentTarget)
+    const { jobSearch, city } = Object.fromEntries(formData.entries())
+    window.location.href = `/jobsearch?q=${jobSearch}${
+      city !== '' ? `&city=${city}` : ''
+    }`
+  }
+
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.searchContainer}>
         <SearchIcon />
         <input
