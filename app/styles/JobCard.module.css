@@ -1,4 +1,3 @@
-/* TODO: Revisar la parte final del Svg */
 .jobCard {
   padding: 20px;
   border-radius: var(--rounded);
@@ -46,11 +45,11 @@
 .salary {
   font-weight: bold;
 }
-.author-name,
+.authorName,
 .location,
 .salary,
 .workday,
-.time-ago,
+.timeAgo,
 .applications {
   font-size: var(--text-xs);
 }

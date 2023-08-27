@@ -9,7 +9,7 @@
   font-size: var(--text-lg);
   font-weight: 500;
 }
-.categoriesCcontainer {
+.categoriesContainer {
   width: 80%;
   height: 100%;
   display: grid;

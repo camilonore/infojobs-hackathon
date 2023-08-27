@@ -13,14 +13,14 @@ async function MasonryCategories() {
             const categories = facet.values.slice(0, 8)
             return categories.map((category, idx) => {
               const path = category.key.toString()
+              const className = `${styles.categoryCard} ${
+                styles[`place${idx}`]
+              }`
               return (
                 <>
-                  <a
-                    className={`category-card place-${idx}`}
-                    href={`jobsearch?category=${path}`}
-                  >
-                    <p className='title'>{category.value}</p>
-                    <p className='count'>{category.count} Empleos</p>
+                  <a className={className} href={`jobsearch?category=${path}`}>
+                    <p className={styles.title}>{category.value}</p>
+                    <p className={styles.count}>{category.count} Empleos</p>
                     <img src={`image${idx}.webp`} alt='' />
                   </a>
                 </>

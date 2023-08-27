@@ -42,35 +42,34 @@ function JobCard({ job }: { job: JobItem }) {
   const parsedDate = Date.parse(updated)
   const timeAgo = getTimeAgo(parsedDate, 'es')
 
-  // TODO: Change face icon with applications
   const FaceIcon = getFaceIcon(Number(applications))
 
   return (
-    <a className='jobCard' href={`jobsearch/${job.id}`}>
+    <a className={styles.jobCard} href={`jobsearch/${job.id}`}>
       <header className={styles.header}>
         <img src={companyLogo} alt={author.name} />
         <div>
-          <h3 className='title'>{jobTitle}</h3>
-          <p className='author-name'>{author.name}</p>
+          <h3 className={styles.title}>{jobTitle}</h3>
+          <p className={styles.authorName}>{author.name}</p>
         </div>
       </header>
-      <p className='location'>
-        <LocationIcon className='text-icon' />
+      <p className={styles.location}>
+        <LocationIcon className={styles.textIcon} />
         {jobLocation}
       </p>
-      <p className='workday'>
-        <SuitboxIcon className='textIcon' />
+      <p className={styles.workday}>
+        <SuitboxIcon className={styles.textIcon} />
         {`Tipo de jornada: ${workDay.value}`}
       </p>
-      <p className='salary'>
-        <SalaryIcon className='textIcon' />
+      <p className={styles.salary}>
+        <SalaryIcon className={styles.textIcon} />
         {salaryDescription}
       </p>
-      <p className='time-ago'>
-        <ClockIcon className='texIicon' />
+      <p className={styles.timeAgo}>
+        <ClockIcon className={styles.textIcon} />
         {`Actualizado ${timeAgo}`}
       </p>
-      <p className='applications'>
+      <p className={styles.applications}>
         <FaceIcon />
         {`${applications} Candidatos postulados!`}
       </p>

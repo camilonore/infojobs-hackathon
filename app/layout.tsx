@@ -1,6 +1,7 @@
 import { Footer } from './components/common/Footer'
 import { Header } from './components/common/Header'
 import '@styles/globals.css'
+import styles from '@styles/RootLayout.module.css'
 
 interface Props {
   children: React.ReactNode
@@ -12,12 +13,11 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }: Props) {
-  console.log({ children })
   return (
     <html lang='es'>
-      <body>
+      <body className={styles.body}>
         <Header />
-        {children}
+        <main className={styles.main}>{children}</main>
         <Footer />
       </body>
     </html>

@@ -8,7 +8,8 @@ import type {
 
 class InfojobsServices {
   private static headers = {
-    Authorization: `Basic ${token}`
+    Authorization: `Basic ${token}`,
+    'Access-Control-Allow-Origin': '*'
   }
 
   private static async fetchApi(url: string): Promise<Response> {
@@ -39,6 +40,7 @@ class InfojobsServices {
   }
 
   static async searchOffers(query: string): Promise<OfferResponse> {
+    console.log(this.headers)
     const url = `https://api.infojobs.net/api/9/offer?${query}`
     const response = await InfojobsServices.fetchApi(url)
     return response.json()
