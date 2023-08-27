@@ -1,0 +1,26 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  text-decoration: none;
+  color: var(--primary-color);
+  border-radius: var(--rounded);
+  border: 1px solid var(--primary-color);
+  padding: 5px 10px;
+}
+.button > svg {
+  height: 20px;
+}
+.button > svg > path {
+  fill: var(--primary-color);
+  transition: transform 0.2s ease-in;
+}
+.button:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+.button:hover > svg > path {
+  fill: #fff;
+  transform: translateX(2px);
+}
